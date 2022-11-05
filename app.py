@@ -1,8 +1,39 @@
 #!/usr/bin/python3
-import re, random
+import re
+import random
+import json
+from urllib import request
+
+# ==================== FUNCTION =====================================
+
+# function to remove spaces from a string
+def remove(string):
+    return "".join(string.split())
+
+# ================== REST API - GET REQUEST =========================
+
+# api GET request to ipwhois at ip addr 8.8.4.4
+ip = '8.8.4.4'
+response = request.urlopen('http://ipwho.is/' + ip)
+ipwhois = json.load(response)
+
+# store response in a file
+myFile = open('api-response.txt', 'w')
+myFile.write(str(ipwhois))
+myFile.close()
+
+# grab the value for 'country' in the json
+myFile = open('api-response.txt', 'r')
+country = ('{0}'.format(ipwhois['country'])).lower()
+
+# ===================== HANGMAN GAME ==============================
 
 # create a list of words to be used for the game
 words = ['coffee', 'banana', 'airport', 'cryptography', 'computer']
+
+# append the 'country' value to the list of words for the game
+words.append(remove(country)) # invoke function to remove any spaces
+myFile.close()
 
 # choose a random word from the array
 chosenWord = random.choice(words)
