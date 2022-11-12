@@ -7,10 +7,10 @@ from urllib import request
 # ==================== FUNCTION =====================================
 
 # function to remove spaces from a string
-def remove(string):
+def removeSpaces(string):
     return "".join(string.split())
 
-# ================== REST API - GET REQUEST =========================
+# ================== HTTP GET REQUEST =========================
 
 # api GET request to ipwhois at ip addr 8.8.4.4
 ip = '8.8.4.4'
@@ -22,9 +22,13 @@ country = ('{0}'.format(ipwhois['country'])).lower()
 
 # ===================== HANGMAN GAME ==============================
 
+# -------------------
+#     variables
+# -------------------
+
 # create a list of words to be used for the game
 words = ['coffee', 'banana', 'airport', 'cryptography', 'computer']
-words.append(remove(country)) # invoke function to remove any spaces
+words.append(removeSpaces(country)) # invoke function to remove any spaces
 
 # choose a random word from the array
 chosenWord = random.choice(words)
@@ -34,6 +38,10 @@ lives = 5
 
 # array that stores all the letters that a player submits
 letters = []
+
+# -------------------
+#     star game
+# -------------------
 
 # prompt user with start of game
 print('------------- Welcome to Hangman -------------')
