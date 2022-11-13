@@ -14,7 +14,7 @@ def removeSpaces(string):
 
 # api GET request to ipwhois at ip addr 8.8.4.4
 ip = '8.8.4.4'
-response = request.urlopen('http://ipwho.is/' + ip)
+response = request.urlopen('http://ipwho.is/' + ip) #nosec
 ipwhois = json.load(response)
 
 # store the value of 'country' from the json object 'ipwhois'
