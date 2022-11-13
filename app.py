@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import re
+import regex
 import random
 import json
 from urllib import request
@@ -91,7 +91,7 @@ while lives != 0:
     print("\n") # new line break
 
     # using the regex above, we check if the submitted character is valid
-    if not re.match('[a-z]', key):
+    if not regex.match('[a-z]', key):
         print('The letter ' + key + ' is invalid. Try again!\n')
         continue
 
